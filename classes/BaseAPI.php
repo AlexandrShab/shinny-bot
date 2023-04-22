@@ -74,7 +74,7 @@ class BaseAPI
     {
         $db = new Connect;
         $user = array();
-        $data = $db->prepare("SELECT * FROM users WHERE id ='$id' LIMIT 1");
+        $data = $db->prepare("SELECT * FROM bot_users WHERE id ='$id' LIMIT 1");
         $data->execute();
         $user = $data->fetch(PDO::FETCH_ASSOC);
             return $user;               
@@ -108,13 +108,5 @@ class BaseAPI
     }
     
     
-    public function updateBanData($user_id, $chat_id, $message_id, $menu_id)
-    {
-        $base = new Connect;
-        $query = "UPDATE black_list SET menu_id = '$menu_id' 
-                WHERE chat_id = '$chat_id' AND user_id = '$user_id' AND message_id = '$message_id';";
-        $data = $base->prepare($query);
-        $res = $data->execute();
-        return $res;
-    }
+   
 }
