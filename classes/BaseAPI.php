@@ -1,4 +1,6 @@
 <?php
+$botUrl = "https://shinny-bot.shinny-mir.by";
+$setwebHookURL = "";
 require_once __DIR__ . '/Connect.php';
 class BaseAPI
 {
