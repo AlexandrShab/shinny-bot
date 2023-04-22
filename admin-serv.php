@@ -25,7 +25,7 @@ $tg_user = getTelegramUserData();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
 
-    <title>SertSale</title>
+    <title>Шинный Мир</title>
     <style>
         body {
             font-family: "Playfair Display", Roboto, Helvetica, Arial, sans-serif;
