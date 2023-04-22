@@ -229,22 +229,13 @@ $tg_user = getTelegramUserData();
                 <a href="https://shinny-bot.shinny-mir.by/admin-serv.php?method=getAdmins"><text>Администраторы бота</text></a>
               
             </div>
-            <div class="menu-item">
-            <a href="#" onclick="closeNav();getMessages()">
-                <text>Сообщения в личку боту</text></a>
-            </div>
+            
             <div class="menu-item">
                 <a href="#" onclick="closeNav();getChats();">
-                <text>Чаты с Модератором</text></a>
+                <text>Чаты с Шинным Ботом</text></a>
             </div>
-            <div class="menu-item">
-                <a href="https://shinny-bot.shinny-mir.by/admin-serv.php?method=getBlackList">
-                <text>Черный список</text></a>
-            </div>
-            <div class="menu-item">
-                <a href="https://shinny-bot.shinny-mir.by/admin-serv.php?method=getWords">
-                <text>Редактор Запрещенных слов</text></a>
-            </div>
+            
+            
         </div>
        <div id="data">
                 
