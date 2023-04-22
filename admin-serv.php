@@ -482,11 +482,11 @@ function getTelegramUserData() {
      </div><!-- конец класса content-->
      <script>
         function sendMesage(user_id, name){
-            let link = "https://bot.shinny-mir.by/admin-serv.php?method=sendMessage&chat_id=" + user_id + "&name=" + name;
+            let link = "https://shinny-bot.shinny-mir.by/admin-serv.php?method=sendMessage&chat_id=" + user_id + "&name=" + name;
             document.location.href=link;
         }
         function admin(user_id, adm){
-            let link = "https://bot.shinny-mir.by/admin-serv.php?method=admin&user_id="+user_id+"&set=" + adm;
+            let link = "https://shinny-bot.shinny-mir.by/admin-serv.php?method=admin&user_id="+user_id+"&set=" + adm;
             document.location.href=link;
         }
      </script>   
