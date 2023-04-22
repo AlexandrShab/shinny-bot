@@ -104,7 +104,7 @@ if (isset($update['message'])) {
 
         if (hasHello($mes_text)) {
             $hi = goodTime();
-            $bot->sendMes($chat_id, "👋 " . $hi . ", <b>" . $user->first_name . "</b>\n\nЯ Бот-Помощник магазина Шинный Мир!!!");
+            $bot->sendMes($chat_id, "👋 " . $hi . ", <b>" . $user->first_name . "</b>,\n\nЯ Бот-Помощник магазина Шинный Мир!!!");
         }
 
 
@@ -115,7 +115,7 @@ if (isset($update['message'])) {
             {
                 if (($msg['text'] == ('/start' . BOT_NAME)) || ($msg['text'] == '/start')) {
 
-                    $text2 = "👋 Здравствуйте, <b>" . $tg_user['first_name'] . "!</b>\n\n@M.";
+                    $text2 = "👋 Здравствуйте, <b>" . $tg_user['first_name'] . "!</b>\n\n@ShinnyMir_bot  - Бот-Помощник магазина Шинный Мир!!!";
                     $bot->sendKeyboard($chat_id, $text2, writeToExpertKeyboard());
                     return;
                 }
