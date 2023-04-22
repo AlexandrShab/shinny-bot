@@ -2,7 +2,7 @@
 require_once __DIR__ . '/autoload.php';
   $db = new BaseAPI;
   $token = $db->getToken();
-  define('BOT_TOKEN', $token); // ModerTop_Bot token 
+  define('BOT_TOKEN', $token); // Bot token 
 
 function checkTelegramAuthorization($auth_data) {
 
@@ -40,6 +40,6 @@ try {
 }
 
 // header('Location: login_example.php');
-header('Location: http://bot.shinny-mir.by/admin-serv.php');
+header('Location: http://shinny-bot.shinny-mir.by/admin-serv.php');
 
 ?>
