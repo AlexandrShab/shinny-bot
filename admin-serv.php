@@ -180,7 +180,7 @@ $tg_user = getTelegramUserData();
       
         $html .= "<a href=\"/admin-serv.php?logout=1\" 
             class=\"dropdown\" style=\"float:right;\">
-            <img src=\"/public/img/door1.jpg\"
+            <img src=\"/home/shinny-mir/public/img/door1.jpg\"
                 style=\"height:32px;margin-right:10px;\">
             </a>";
         
@@ -195,13 +195,13 @@ $tg_user = getTelegramUserData();
               $html .= "<name style=\"float:right;margin:10px;
                     color:black;\">{$first_name}</name>";
           }
-        $html .= "<a style=\"float:left;\" href=\"https:/t.me/TgBotMaster\">Support</a>";
+        $html .= "<a style=\"float:left;\" href=\"https://t.me/TgBotMaster\">Support</a>";
        print_r($html); 
     }else {
         $bot_username = BOT_USERNAME;
         $authItem = new AuthItem;
         $html = $authItem->content;
-        $html .= "<a style=\"float:left;\" href=\"https:/t.me/TgBotMaster\">Support</a>";
+        $html .= "<a style=\"float:left;\" href=\"https://t.me/TgBotMaster\">Support</a>";
         print_r($html);
     }
     
