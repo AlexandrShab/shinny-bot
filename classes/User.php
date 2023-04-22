@@ -21,7 +21,7 @@ class User
     public function setAdmin($adm)
     {
         $base = new Connect;
-        $query = "UPDATE `users` SET is_admin='$adm' WHERE id ='$this->id';";
+        $query = "UPDATE `bot_users` SET is_admin='$adm' WHERE user_id ='$this->id';";
         
         $data = $base->prepare($query);
         $data->execute();
@@ -32,7 +32,7 @@ class User
     public function isAdmin()
     {
         $base = new Connect;
-        $query = "SELECT is_admin FROM users WHERE id ='$this->id' LIMIT 1";
+        $query = "SELECT is_admin FROM bot_users WHERE user_id ='$this->id' LIMIT 1";
         
         $data = $base->prepare($query);
         $data->execute();
@@ -47,7 +47,7 @@ class User
         $first_name = $arrUser["first_name"];
         $last_name = $arrUser["last_name"];
         $username = $arrUser["username"];
-        $query = "UPDATE `users` SET first_name = '$first_name', last_name = '$last_name', username = '$username' WHERE id ='$id';";
+        $query = "UPDATE `bot_users` SET first_name = '$first_name', last_name = '$last_name', username = '$username' WHERE user_id ='$id';";
         $data = $base->prepare($query);
         $data->execute();
         
