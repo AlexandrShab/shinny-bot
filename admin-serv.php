@@ -222,11 +222,11 @@ $tg_user = getTelegramUserData();
        
        
             <div class="menu-item">
-                <a href="https://bot.shinny-mir.by/admin-serv.php?method=getUsers">
+                <a href="https://shinny-bot.shinny-mir.by/admin-serv.php?method=getUsers">
                     <text>Пользователи бота</text></a>
             </div>
             <div class="menu-item">
-                <a href="https://bot.shinny-mir.by/admin-serv.php?method=getAdmins"><text>Администраторы бота</text></a>
+                <a href="https://shinny-bot.shinny-mir.by/admin-serv.php?method=getAdmins"><text>Администраторы бота</text></a>
               
             </div>
             <div class="menu-item">
@@ -238,11 +238,11 @@ $tg_user = getTelegramUserData();
                 <text>Чаты с Модератором</text></a>
             </div>
             <div class="menu-item">
-                <a href="https://bot.shinny-mir.by/admin-serv.php?method=getBlackList">
+                <a href="https://shinny-bot.shinny-mir.by/admin-serv.php?method=getBlackList">
                 <text>Черный список</text></a>
             </div>
             <div class="menu-item">
-                <a href="https://bot.shinny-mir.by/admin-serv.php?method=getWords">
+                <a href="https://shinny-bot.shinny-mir.by/admin-serv.php?method=getWords">
                 <text>Редактор Запрещенных слов</text></a>
             </div>
         </div>
@@ -381,7 +381,7 @@ if (isset($_GET['method']))
                         $num
                     </td>
                     <td>
-                        $user->id
+                        $user->user_id
                     </td>
                     <td>
                         $user->first_name $user->last_name
@@ -390,13 +390,13 @@ if (isset($_GET['method']))
                         $user->username
                     </td>
                     <td>
-                        $user->date
+                        $user->start_date
                     </td>
-                    <td onclick=\"admin($user->id, $set)\">
+                    <td onclick=\"admin($user->user_id, $set)\">
                         <button style=\"width:90%;height:90%\">$adm 🔄</button>
                         
                     </td>
-                    <td onclick=\"sendMesage($user->id,'$user_name')\">
+                    <td onclick=\"sendMesage($user->user_id,'$user_name')\">
                         <button style=\"width:90%;height:90%\">Написать</button>
                     </td>
                 </tr>";
