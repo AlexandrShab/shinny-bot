@@ -86,7 +86,8 @@ class BaseAPI
         $first_name = $user["first_name"];
         $last_name = $user["last_name"];
         $username = $user["username"];
-        $query = "INSERT INTO bot_users (user_id, first_name, last_name, username) VALUES ('$id', '$first_name', '$last_name', '$username');";
+        $date = date("Y-m-d H:i:s");
+        $query = "INSERT INTO bot_users (user_id, first_name, last_name, username, start_date) VALUES ('$id', '$first_name', '$last_name', '$username', $date);";
         $data = $db->prepare($query);
         $data->execute();
         return true;

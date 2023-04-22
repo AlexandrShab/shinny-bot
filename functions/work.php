@@ -17,7 +17,7 @@ function goodTime()
     date_default_timezone_set('Europe/Moscow'); 
     //$today = date("Y-m-d");
     $time = date("H"); // 17:16:18
-    //$today = date("Y-m-d H:i:s"); // 2001-03-10 17:16:18 (the MySQL DATETIME format)
+    //$now = date("Y-m-d H:i:s"); // 2001-03-10 17:16:18 (the MySQL DATETIME format)
     $hiMes = 'Здравствуйте';
  
       if ($time > 5 && $time < 10) {  $hiMes = 'Доброе утро';}
