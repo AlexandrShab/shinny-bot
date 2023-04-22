@@ -180,7 +180,7 @@ $tg_user = getTelegramUserData();
       
         $html .= "<a href=\"/admin-serv.php?logout=1\" 
             class=\"dropdown\" style=\"float:right;\">
-            <img src=\"/public/img/door1.jpg\">
+            <img src=\"/public/img/door1.jpg\"
                 style=\"height:32px;margin-right:10px;\">
             </a>";
         
