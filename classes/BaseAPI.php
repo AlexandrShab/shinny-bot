@@ -74,7 +74,7 @@ class BaseAPI
     {
         $db = new Connect;
         $user = array();
-        $data = $db->prepare("SELECT * FROM bot_users WHERE id ='$id' LIMIT 1");
+        $data = $db->prepare("SELECT * FROM bot_users WHERE user_id ='$id' LIMIT 1");
         $data->execute();
         $user = $data->fetch(PDO::FETCH_ASSOC);
             return $user;               
@@ -86,7 +86,7 @@ class BaseAPI
         $first_name = $user["first_name"];
         $last_name = $user["last_name"];
         $username = $user["username"];
-        $query = "INSERT INTO bot_users (id, first_name, last_name, username) VALUES ('$id', '$first_name', '$last_name', '$username');";
+        $query = "INSERT INTO bot_users (user_id, first_name, last_name, username) VALUES ('$id', '$first_name', '$last_name', '$username');";
         $data = $db->prepare($query);
         $data->execute();
         return true;
