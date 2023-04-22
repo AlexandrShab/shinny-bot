@@ -13,7 +13,7 @@ exit();
   define('WORK_GROUP',   '-1001985844919'); //рабочая общая группа (тестовая)
   define('ADMIN_CHATS', [BOT_GROUP, ADMINS_GROUP]);
 
-  define('BOT_NAME','@Moder_TopBot');
+  define('BOT_NAME','@ShinnyMir_bot');
   
 require_once __DIR__ . '/autoload.php';
 require_once __DIR__ . "/functions/work.php";
@@ -44,41 +44,7 @@ if(isset($update['callback_query']))
     $db = new BaseAPI;
 
     //~~~~~~~~~~~~~~~~~~~
-    if ($dataBack == 'banuser')
-    {
-      $ban_id = substr($callBackData, 7);
-      $baned_user = $db->getBanedUser($ban_id);
-      if(isset($baned_user->menu_id))
-      {
-        $bot->delMess($chat['id'], $baned_user->menu_id);   // удаляем меню
-      }
-      $bot->banChatMember($baned_user->chat_id, $baned_user->user_id);
-      $bot->answerCallbackQuery($callback_id,"Пользователь забанен и удален из группы.",true);
-      
-      return;
-  }
-  //~~~~~~~~~~~~~~~~~~~~~~~~
-  if ($dataBack == 'unbanus')
-  {
-      $ban_id = substr($callBackData, 7);
-
-      $baned_user = $db->getBanedUser($ban_id); 
-      if(isset($baned_user->menu_id))
-      {
-
-        //здесь нужно отредактировать сообщение
-        //добавить инфу о том, что сделали с пользователем
-        $bot->delMess($chat['id'], $baned_user->menu_id);   // удаляем меню
-       
-      }
-      $bot->restoreUser($baned_user->chat_id, $baned_user->user_id);//воостанавливаем права пользователю
-      $chat_r = $db->getChatById($baned_user->chat_id);//данные чата
-      $textStr = "Права пользователя <b>$baned_user->first_name  $baned_user->last_name</b> восстановлены в группе\n";
-      $textStr .= "<b>$chat_r->title</b>";
-      $bot->sendMes($chat['id'], $textStr);
-      $bot->answerCallbackQuery($callback_id, 'Пользователь  снова может писать в общую группу.',true);
-      return;
-  }
+    
 }
 //~~~~~~~~~~~ END обработки апдейта типа callback_query ~~~~~~
 //~~~~~~~~~~~ Начало обработки апдейта типа message ~~~~~~
@@ -133,18 +99,19 @@ if(isset($update['message']))
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     if ($chat_type == 'private')// Работаем в личке с ботом
     {    
-        $base->storeMessage($mes_text, $user->id, $message_id);//Сохраняем в базу текст пользователя
-        //  И пересылаем сообщение в группу "Личка бота"
+       
+        //  пересылаем сообщение в группу "Личка бота"
         $name_as_link = $user->getNameAsTgLink();
         $user_id = $user->id;
-        $bot->sendKeyboard(BOT_GROUP, "Боту пишет <b>$name_as_link</b> ID: $user_id", answerFromBot($user_id, $user->first_name));
         $bot->forwardMessage(BOT_GROUP, $chat_id,  $message_id);
+        $bot->sendKeyboard(BOT_GROUP, "Боту пишет <b>$name_as_link</b> ID: $user_id", answerFromBot($user_id, $user->first_name));
+        
         
         
         if (hasHello($mes_text))
         {
             $hi = goodTime();
-            $bot->sendMes($chat_id, "👋 " . $hi . ", <b>" . $user->first_name . "</b>\n\nМодератор предназначен для работы в групповых чатах.");
+            $bot->sendMes($chat_id, "👋 " . $hi . ", <b>" . $user->first_name . "</b>\n\nЯ Бот-Помощник магазина Шинный Мир!!!");
         }
         
            
@@ -156,7 +123,7 @@ if(isset($update['message']))
           if (($msg['text'] == ('/start' . BOT_NAME)) || ($msg['text'] == '/start'))
           { 
             
-            $text2 = "👋 Здравствуйте, <b>" . $tg_user['first_name'] . "!</b>\n\n@Moder_TopBot - помощник в управлении группой.\n\n👉 Если вам ограничили отправку сообщений, - пишите @AlexanderShab.";
+            $text2 = "👋 Здравствуйте, <b>" . $tg_user['first_name'] . "!</b>\n\n@M.";
             $bot->sendKeyboard($chat_id, $text2, writeToExpertKeyboard());
             return;
           }
@@ -166,7 +133,7 @@ if(isset($update['message']))
             
             $hi = goodTime();
             $bot->sendMes($chat_id, $hi . ", <b>" . $user->first_name . "</b>");
-            $textAbout = "Модератор удаляет из группового чата сообщения, содержащие рекламу, нецензурные и оскорбительные выражения.\nЕсли Вам была ограничена возможность отправки сообщений в группу, - пишите Администратору Бота @AlexanderShab";
+            $textAbout = "Я Бот-Помощник магазина Шинный Мир!!!";
             $bot->sendKeyboard($chat_id, $textAbout, writeToExpertKeyboard());
             return;
           }
@@ -193,7 +160,7 @@ if(isset($update['message']))
         $db = new BaseAPI;
         
         $db->updateChatList($chat);//Проверяем/добавляем чат
-        $db->addChatMember($user_id, $chat_id);//Проверяем/добавляем чат-мембера
+       
  
         if ($user->isAdmin())// Если сообщение написал админ, - проверки не запускаем
         {
@@ -201,42 +168,7 @@ if(isset($update['message']))
         } 
         if($admins_area == true) return;//если область админов - выход
 
-        $mesHasEntities = false;
-        $alarmText = '';
-
-        if (isset($msg['entities']) || isset($msg['caption_entities']))
-        {
-          $mesHasEntities = true;
-          $alarmText = '<b>сущности</b>';
-          
-        }
-        $badWords = mesHasBadWords($mes_text);
-        if($badWords == false && $mesHasEntities == false)
-        {
-          return;   //выход, если сообщение чисто
-        }
-        else  //Иначе текст сообщения содержит слова табу и(или) сущности!!!
-        {
-            if (!$badWords == false)
-            {
-              $alarmText .= '...';
-              foreach ($badWords as $word) 
-              {
-                $alarmText .= ", <i><u>$word</u></i>";
-              }
-            }
-            //Сохраним юзера в черный список, удалим сообщение и забаним его
-            $bot->sendMes(ADMINS_GROUP, 'Пользователь <b>' . $user->getNameAsTgLink() . "</b> отправил $alarmText:");
-            $bot->forwardMessage(ADMINS_GROUP, $chat_id, $message_id);//пересылаем админам
-            $ban_id = $db->saveBanData($user_id, $chat_id, $message_id, $mes_text);// Сохраняем данные в черный список
-            $bot->delMess($chat_id, $message_id);//Удаляем сообщение
-            $bot->restrictUser($chat_id, $user_id);//запрещаем отправку сообщений юзеру
-            
-            $menu_id = $bot->sendKeyboard(ADMINS_GROUP, 'Пользователю <b>' . $user->getNameAsTgLink() . '</b> установлен запрет на отправку сообщений.', banKeyboard($ban_id));
-            
-            $db->updateBanData($user_id, $chat_id, $message_id, $menu_id);
-         
-        } 
+       
         
 
     }//конец обработки неприватных чатов
