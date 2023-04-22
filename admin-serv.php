@@ -303,7 +303,7 @@ $tg_user = getTelegramUserData();
             console.log(chats);
             let elemForInsert = document.getElementById('data');
             elemForInsert.innerHTML = '';
-            let htmlForInsert = `<h3>Количество чатов с Модератором всего: ${chats.length}</h3>`;
+            let htmlForInsert = `<h3>Количество чатов с Shinny\'м ботом всего: ${chats.length}</h3>`;
             elemForInsert.insertAdjacentHTML('beforeend', htmlForInsert)
             for(let i=0;i<chats.length;i++){
                 let row = `<li class="row_of_list" id="${chats[i].id}">
