@@ -4,8 +4,8 @@
 require_once __DIR__ . '/autoload.php';
 //var_dump($_COOKIE);
 
-define('BOT_USERNAME', 'Moder_TopBot'); // place username of your bot here
-define('BOT_GROUP', '-973581514');
+define('BOT_USERNAME', 'ShinnyMir_bot'); // place username of your bot here
+define('BOT_GROUP', '-1001860899757');
 
 if (isset($_GET['logout'])) {
   setcookie('tg_user', '');
@@ -207,7 +207,7 @@ $tg_user = getTelegramUserData();
     
 ?>
     <div class="brand" style="background-color: black;">
-        <text>Moder_TopBot</text>
+        <text>ShinnyMir_bot</text>
     </div>
     
 <?php
@@ -262,7 +262,7 @@ $tg_user = getTelegramUserData();
       async function getRequests(){
             let list = document.getElementById('list');
             if(list) {list.innerHTML = ''}
-            let res = await fetch("https://bot.shinny-mir.by/server.php?method=getRequests");
+            let res = await fetch("https://shinny-bot.shinny-mir.by/server.php?method=getRequests");
             let chats = await res.json();
             
             let elemForInsert = document.getElementById('data');
@@ -281,7 +281,7 @@ $tg_user = getTelegramUserData();
         async function getMessages(){
             let list = document.getElementById('list');
             if(list) {list.innerHTML = ''}
-            let res = await fetch("https://bot.shinny-mir.by/server.php?method=getMessages");
+            let res = await fetch("https://shinny-bot.shinny-mir.by/server.php?method=getMessages");
             let messages = await res.json();
             console.log(messages);
             let elemForInsert = document.getElementById('data');
@@ -298,7 +298,7 @@ $tg_user = getTelegramUserData();
         async function getChats(){
             let list = document.getElementById('list');
             if(list) {list.innerHTML = ''}
-            let res = await fetch("https://bot.shinny-mir.by/server.php?method=getChats");
+            let res = await fetch("https://shinny-bot.shinny-mir.by/server.php?method=getChats");
             let chats = await res.json();
             console.log(chats);
             let elemForInsert = document.getElementById('data');
