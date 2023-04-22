@@ -6,7 +6,7 @@ class Connect extends PDO
     {
         parent::__construct(
             "mysql:host=localhost; dbname=shinnymi_base",
-            'shinnymi_site',
+            'shinnymi_bot',
             'q6664091q===',
             array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4")
         );
