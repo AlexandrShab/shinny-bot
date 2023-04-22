@@ -1,23 +1,5 @@
 <?php
-function mesHasBadWords($userMessage)
-{
-    $db = new BaseAPI;  
-    $words = $db->getBadWords();// Получаем из базы массив со словами
-    $sample = mb_strtolower($userMessage, 'UTF-8'); //Перевод текста сообщения в нижний регистр
-    $arrFinded = [];
-    for($i=0;$i<count($words);$i++)
-    {
-        if(strpos($sample, $words[$i]) > -1)
-        {
-            $arrFinded[] = $words[$i];
-        }
-    }
-    if(count($arrFinded)>0)
-    {
-        return $arrFinded;
-    }
-    return false;
-}
+
 function hasHello($sample)
 {
     $sample = mb_strtolower($sample, 'UTF-8');
@@ -51,7 +33,7 @@ function writeToExpertKeyboard()
     $keyboard = [
         'inline_keyboard' => [
             [
-                ['text' => '▶️ НАПИСАТЬ АДМИНИСТРАТОРУ', 'url' => 'http://t.me/alexandershab'],
+                ['text' => '▶️ НАПИСАТЬ АДМИНИСТРАТОРУ', 'url' => 'http://t.me/tgBotMaster'],
             ],
         ],
     ];
@@ -105,7 +87,7 @@ function inLineWebAppButton()
     $keyboard = [
         'inline_keyboard' =>
           [
-      [['text'=> 'Продвинутый поиск','web_app' => ['url'=> 'https://sertbot.shinny-mir.by/pages/find-product.php']]],
+      [['text'=> 'Продвинутый поиск','web_app' => ['url'=> 'https://shinny-bot.shinny-mir.by/pages/find-product.php']]],
             ],
           /*'resize_keyboard': true,
           'one_time_keyboard': true,*/
@@ -117,7 +99,7 @@ function adminMenu()
     $keyboard = [
         'inline_keyboard' =>
           [
-      [['text' => 'Страница Админа', 'url' => 'https://bot.shinny-mir.by/admin-serv.php']],
+      [['text' => 'Страница Админа', 'url' => 'https://shinny-bot.shinny-mir.by/admin-serv.php']],
       
           ],
     ];
@@ -128,7 +110,7 @@ function answerFromBot($chat_id, $name)
      $keyboard = [
         'inline_keyboard' =>
           [
-      [['text'=> 'Ответить ботом','url' => "http://bot.shinny-mir.by/admin-serv.php?method=sendMessage&chat_id=$chat_id&name=$name"]],
+      [['text'=> 'Ответить ботом','url' => "http://shinny-bot.shinny-mir.by/admin-serv.php?method=sendMessage&chat_id=$chat_id&name=$name"]],
             ],
     ];
     return $keyboard;   
