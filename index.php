@@ -116,7 +116,7 @@ if (isset($update['message'])) {
                 if (($msg['text'] == ('/start' . BOT_NAME)) || ($msg['text'] == '/start')) {
 
                     $text2 = "👋 Здравствуйте, <b>" . $tg_user['first_name'] . "!</b>\n\n@ShinnyMir_bot  - Бот-Помощник магазина Шинный Мир!!!";
-                    $bot->sendKeyboard($chat_id, $text2, writeToExpertKeyboard());
+                    $bot->sendKeyboard($chat_id, $text2, inLineWebAppButton());
                     return;
                 }
 
