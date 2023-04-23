@@ -87,7 +87,7 @@ function inLineWebAppButton()
     $keyboard = [
         'inline_keyboard' =>
           [
-      [['text'=> 'Продвинутый поиск','web_app' => ['url'=> 'https://shinny-bot.shinny-mir.by/list.php']]],
+      [['text'=> 'Продвинутый поиск','web_app' => ['url'=> 'https://shinny-mir.by/list.php']]],
             ],
           /*'resize_keyboard': true,
           'one_time_keyboard': true,*/
