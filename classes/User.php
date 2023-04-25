@@ -47,7 +47,9 @@ class User
         $first_name = $arrUser["first_name"];
         $last_name = $arrUser["last_name"];
         $username = $arrUser["username"];
-        $query = "UPDATE `bot_users` SET first_name = '$first_name', last_name = '$last_name', username = '$username' WHERE user_id ='$id';";
+        $date = date("Y-m-d H:i:s");
+        $query = "UPDATE `bot_users` SET first_name = '$first_name', last_name = '$last_name', username = '$username', last_date = '$date'
+        WHERE user_id ='$id';";
         $data = $base->prepare($query);
         $data->execute();
         
