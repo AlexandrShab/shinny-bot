@@ -45,6 +45,32 @@ if (isset($update['callback_query'])) {
 
 }
 //~~~~~~~~~~~ END обработки апдейта типа callback_query ~~~~~~
+
+
+//~~~~~~~~~~~ Начало обработки апдейта типа ORDER ~~~~~~
+if (isset($update['order'])) 
+{
+    $tg_user = $update['userData']['user'];
+    $orderItems = $update['cart'];
+    $orderUser = $update['order'];
+    $user = new User($tg_user);
+
+
+    $text1 = '<b>' . $tg_user['first_name'] . '</b>, Ваш заказ принят в обработку:\n';
+    $text2 = 'Пользователь <b>' . $user->getNameAsTgLink() . '</b>, сделал заказ:\n';
+    $totalSum = 0;
+    for($i=0;$i<count($orderItems);$i++)
+    {
+        $textOrder .= $i+1 . '. ' . $orderItems[$i]['model'] . ' - <b>' . $orderItems[$i]['qty'] . '</b>шт\n';
+        $total = floatval($orderItems[$i]['price']) * floatval($orderItems[$i]['qty']);
+        $totalSum += $total;
+        $textOrder .= 'Стоимость: <b>' . $total . '</b>р.\n';
+    }
+    $textOrder .= '<b>' . $totalSum . 'р.</b>';
+    $bot->sendMes($tg_user['id'], $text1 . $textOrder);
+    $bot->sendMes(ADMINS_GROUP, $text2 . $textOrder);
+}
+//~~~~~~~~~~~ END обработки апдейта типа ORDER ~~~~~~
 //~~~~~~~~~~~ Начало обработки апдейта типа message ~~~~~~
 if (isset($update['message'])) {
 
