@@ -66,7 +66,7 @@ if (isset($update['order']))
         $totalSum += $total;
         $textOrder .= 'Стоимость: <b>' . $total . '</b>р.\n';
     }
-    $textOrder .= '<b>' . $totalSum . 'р.</b>';
+    $textOrder .= '<b>Всего: ' . $totalSum . 'р.</b>';
     $bot->sendMes($tg_user['id'], $text1 . $textOrder);
     $bot->sendMes(ADMINS_GROUP, $text2 . $textOrder);
 }
