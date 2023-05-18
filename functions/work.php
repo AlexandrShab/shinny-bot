@@ -33,7 +33,7 @@ function writeToExpertKeyboard()
     $keyboard = [
         'inline_keyboard' => [
             [
-                ['text' => '▶️ НАПИСАТЬ АДМИНИСТРАТОРУ', 'url' => 'http://t.me/tgBotMaster'],
+                ['text' => '▶️ НАПИСАТЬ СПЕЦИАЛИСТУ', 'url' => 'http://t.me/tgBotMaster'],
             ],
         ],
     ];
