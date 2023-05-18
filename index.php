@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 date_default_timezone_set('Europe/Minsk');
 $input = file_get_contents('php://input');
 if (!$input) {
@@ -70,6 +71,7 @@ if (isset($update['order']))
     $bot->sendMes($tg_user['id'], $text1 . $textOrder);
     $bot->sendKeyboard($tg_user['id'], "Вы можете отправить дополнительные пожелания", writeToExpertKeyboard());
     $bot->sendMes(ADMINS_GROUP, $text2 . $textOrder);
+    exit;
 }
 //~~~~~~~~~~~ END обработки апдейта типа ORDER ~~~~~~
 //~~~~~~~~~~~ Начало обработки апдейта типа message ~~~~~~
