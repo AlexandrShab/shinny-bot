@@ -68,7 +68,7 @@ if (isset($update['order']))
     }
     $textOrder .= "\n<b>Всего: " . $totalSum . 'р.</b>';
     $bot->sendMes($tg_user['id'], $text1 . $textOrder);
-    $bot->sendMes($tg_user['id'], "Вы можете отправить дополнительные пожелания", writeToExpertKeyboard());
+    $bot->sendKeyboard($tg_user['id'], "Вы можете отправить дополнительные пожелания", writeToExpertKeyboard());
     $bot->sendMes(ADMINS_GROUP, $text2 . $textOrder);
 }
 //~~~~~~~~~~~ END обработки апдейта типа ORDER ~~~~~~
