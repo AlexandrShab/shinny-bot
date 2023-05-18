@@ -60,9 +60,10 @@ if (isset($update['order']))
     $text1 = '<b>' . $tg_user['first_name'] . "</b>, Ваш заказ принят в обработку:\n\n";
     $text2 = 'Пользователь <b>' . $user->getNameAsTgLink() . "</b>, сделал заказ:\n\n";
     $totalSum = 0;
+    $textOrder = ''; 
     for($i=0;$i<count($orderItems);$i++)
     {
-        $textOrder .= '<b>' . $i+1 . '.</b> ' . $orderItems[$i]['model'] . ' - <b>' . $orderItems[$i]['qty'] . "</b>шт\n";
+        $textOrder .= "<b>" . $i+1 . ". " . $orderItems[$i]['brand'] . "</b>\n" . $orderItems[$i]['model'] . ' - <b>' . $orderItems[$i]['qty'] . "</b>шт\n";
         $total = floatval($orderItems[$i]['price']) * floatval($orderItems[$i]['qty']);
         $totalSum += $total;
         $textOrder .= 'Стоимость: ' . $orderItems[$i]['price'] . ' x ' . $orderItems[$i]['qty'] . ' = <b>' . $total . "</b>р.\n\n";
