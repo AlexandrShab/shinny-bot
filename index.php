@@ -64,7 +64,7 @@ if (isset($update['order']))
         $textOrder .= '<b>' . $i+1 . '.</b> ' . $orderItems[$i]['model'] . ' - <b>' . $orderItems[$i]['qty'] . "</b>шт\n";
         $total = floatval($orderItems[$i]['price']) * floatval($orderItems[$i]['qty']);
         $totalSum += $total;
-        $textOrder .= 'Стоимость: ' . $orderItems[$i]['price'] . ' x ' . $orderItems[$i]['qty'] . ' = <b>' . $total . "</b>р.\n";
+        $textOrder .= 'Стоимость: ' . $orderItems[$i]['price'] . ' x ' . $orderItems[$i]['qty'] . ' = <b>' . $total . "</b>р.\n\n";
     }
     $textOrder .= "\n<b>Всего: " . $totalSum . 'р.</b>';
     $bot->sendMes($tg_user['id'], $text1 . $textOrder);
