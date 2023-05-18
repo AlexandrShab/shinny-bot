@@ -56,8 +56,8 @@ if (isset($update['order']))
     $user = new User($tg_user);
 
 
-    $text1 = '<b>' . $tg_user['first_name'] . "</b>, Ваш заказ принят в обработку:\n";
-    $text2 = 'Пользователь <b>' . $user->getNameAsTgLink() . "</b>, сделал заказ:\n";
+    $text1 = '<b>' . $tg_user['first_name'] . "</b>, Ваш заказ принят в обработку:\n\n";
+    $text2 = 'Пользователь <b>' . $user->getNameAsTgLink() . "</b>, сделал заказ:\n\n";
     $totalSum = 0;
     for($i=0;$i<count($orderItems);$i++)
     {
