@@ -56,15 +56,15 @@ if (isset($update['order']))
     $user = new User($tg_user);
 
 
-    $text1 = '<b>' . $tg_user['first_name'] . '</b>, Ваш заказ принят в обработку:\n';
-    $text2 = 'Пользователь <b>' . $user->getNameAsTgLink() . '</b>, сделал заказ:\n';
+    $text1 = '<b>' . $tg_user['first_name'] . "</b>, Ваш заказ принят в обработку:\n";
+    $text2 = 'Пользователь <b>' . $user->getNameAsTgLink() . "</b>, сделал заказ:\n";
     $totalSum = 0;
     for($i=0;$i<count($orderItems);$i++)
     {
-        $textOrder .= $i+1 . '. ' . $orderItems[$i]['model'] . ' - <b>' . $orderItems[$i]['qty'] . '</b>шт\n';
+        $textOrder .= '<b>' . $i+1 . '.</b> ' . $orderItems[$i]['model'] . ' - <b>' . $orderItems[$i]['qty'] . "</b>шт\n";
         $total = floatval($orderItems[$i]['price']) * floatval($orderItems[$i]['qty']);
         $totalSum += $total;
-        $textOrder .= 'Стоимость: <b>' . $total . '</b>р.\n';
+        $textOrder .= 'Стоимость: ' . $orderItems[$i]['price'] . ' x ' . $orderItems[$i]['qty'] . ' = <b>' . $total . "</b>р.\n";
     }
     $textOrder .= '<b>Всего: ' . $totalSum . 'р.</b>';
     $bot->sendMes($tg_user['id'], $text1 . $textOrder);
